@@ -1,14 +1,17 @@
-import { InputGroup, Input } from "reactstrap";
+import Form from "react-bootstrap/Form";
+import React from "react";
 
 const PhoneNumber = () => {
 
     return(
 
-        <InputGroup className="m-5">
-                <span className="input-group-text"> Téléphone portable</span>
-                <Input type="text" className="col-8"></Input>
-            </InputGroup>
-    )
-}
+        <Form>
+            <Form.Group className="m-5"  controlId="formBasicLastName">
+                <Form.Label>Numéro Portable</Form.Label>
+                <Form.Control type="Number" placeholder="Enter NumberPhone" />
+            </Form.Group>
+        </Form>
+    );
+};
 
 export default PhoneNumber ;

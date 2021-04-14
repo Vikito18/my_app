@@ -1,14 +1,15 @@
 import React from "react";
 
-const Title = () => {
+const TitleNewAccount = () => {
 
     return(
+
         <div className="container-fluid">
             <div className="row">
-                <h1 className="col text-center ">MasterCash</h1>
+                <h1 className="col text-center ">Nouveau compte</h1>
             </div>
         </div>
     );
 };
 
-export default Title;
+export default TitleNewAccount ;

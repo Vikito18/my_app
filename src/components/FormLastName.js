@@ -1,15 +1,18 @@
-import { InputGroup, Input } from "reactstrap";
+import Form from "react-bootstrap/form";
+import React from "react";
 
 
 const FormLastName = () => {
 
     return(
 
-        <InputGroup className="m-5">
-                <span className="input-group-text"> Nom</span>
-                <Input type="text" className="col-8"></Input>
-            </InputGroup>
-    )
-}
+        <Form>
+            <Form.Group className="m-5" controlId="formBasicLastName">
+                <Form.Label>Nom</Form.Label>
+                <Form.Control type="Lastname" placeholder="Enter lastname" />
+            </Form.Group>
+        </Form>
+    );
+};
 
 export default FormLastName ;
