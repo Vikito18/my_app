@@ -3,6 +3,7 @@ import FormPassword from "../components/FormPassword";
 import TitleSignIn from "../components/TitleSignIn";
 import ButtonNext from "../components/ButtonNext";
 import React from "react";
+import ForgotPassword from "../components/ForgotPassword";
 
 
 const Account = () => {
@@ -12,6 +13,7 @@ const Account = () => {
             <TitleSignIn />
             <FormAccountName />
             <FormPassword />
+            <ForgotPassword />
             <ButtonNext />
         </div>
     );
