@@ -4,7 +4,8 @@ import SignUp from "../components/SignUp";
 import SettingAccount from "../components/SettingAccount";
 import Update from "../components/Update";
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+
+
 
 
 
@@ -13,9 +14,7 @@ function App() {
         <div>
             <Title />
             <SignIn />
-            <BrowserRouter>
-                <SignUp />
-            </BrowserRouter>
+            <SignUp />
             <SettingAccount />
             <Update />
         </div>
