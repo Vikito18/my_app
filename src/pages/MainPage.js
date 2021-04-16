@@ -4,20 +4,24 @@ import SignUp from "../components/SignUp";
 import SettingAccount from "../components/SettingAccount";
 import Update from "../components/Update";
 import React from "react";
+import {LinkContainer} from "react-router-bootstrap";
 
 
 
 
 
-function App() {
+
+function MainPage() {
     return (
         <div>
             <Title />
             <SignIn />
-            <SignUp />
+            <LinkContainer to="/NewAccountPart1">
+                <SignUp />
+            </LinkContainer>
             <SettingAccount />
             <Update />
         </div>
     );
 }
-export default App;
+export default MainPage;
