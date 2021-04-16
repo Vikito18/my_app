@@ -4,7 +4,6 @@ import SignUp from "../components/SignUp";
 import SettingAccount from "../components/SettingAccount";
 import Update from "../components/Update";
 import React from "react";
-import {LinkContainer} from "react-router-bootstrap";
 
 
 
@@ -16,9 +15,7 @@ function MainPage() {
         <div>
             <Title />
             <SignIn />
-            <LinkContainer to="/NewAccountPart1">
-                <SignUp />
-            </LinkContainer>
+            <SignUp />
             <SettingAccount />
             <Update />
         </div>
