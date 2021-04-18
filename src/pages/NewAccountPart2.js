@@ -27,7 +27,9 @@ const NewAccountPart2 = () => {
                         </Link>
                     </Col>
                     <Col>
-                        <ButtonOk />
+                        <Link to="/Account">
+                            <ButtonOk />
+                        </Link>
                     </Col>
                 </Row>
             </Container>

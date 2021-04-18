@@ -24,7 +24,7 @@ const Account = () => {
             <Container className="d-flex justify-content-center">
                 <Row>
                     <Col>
-                        <Link to="/MainPage">
+                        <Link to="/">
                             <ButtonReturn />
                         </Link>
                     </Col>
