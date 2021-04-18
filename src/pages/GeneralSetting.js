@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 
 const GeneralSetting = () => {
+    
 
     return (
         <div>
@@ -64,12 +65,12 @@ const GeneralSetting = () => {
             <Container className="d-flex justify-content-center">
                 <Row>
                     <Col>
-                        <Link to="/BudgetManagement">
+                        <Link to="/">
                             <ButtonReturn />
                         </Link>
                     </Col>
                     <Col>
-                        <Link to="/BudgetManagement">
+                        <Link to="/">
                             <ButtonOk />
                         </Link>
                     </Col>

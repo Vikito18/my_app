@@ -1,6 +1,5 @@
 import FormLastName from "../components/FormLastName";
 import FormFirstName from "../components/FormFirstName";
-import PhoneNumber from "../components/PhoneNumber";
 import TitleRecovery from "../components/TitleRecovery";
 import React from "react";
 import Container from "react-bootstrap/Container";
@@ -9,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import ButtonReturn from "../components/ButtonReturn";
 import ButtonOk from "../components/ButtonOk";
 import { Link } from "react-router-dom";
+import FormMail from "../components/FormMail";
 
 
 
@@ -19,7 +19,7 @@ const PasswordRecovery = () => {
             <TitleRecovery />
             <FormLastName />
             <FormFirstName />
-            <PhoneNumber />
+            <FormMail />
             <Container className="d-flex justify-content-center">
                 <Row>
                     <Col>

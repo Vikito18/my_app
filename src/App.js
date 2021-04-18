@@ -7,6 +7,9 @@ import NewAccountPart1 from "./pages/NewAccountPart1";
 import NewAccountPart2 from "./pages/NewAccountPart2";
 import PasswordRecovery from "./pages/PasswordRecovery";
 import GeneralSetting from "./pages/GeneralSetting";
+import SettingAccount from "./pages/SettingAccount";
+import AccountNameModify from "./pages/AccountNameModify";
+import MailModify from "./pages/MailModify";
 
 const App = () => {
 
@@ -21,6 +24,9 @@ const App = () => {
                 <Route path="/NewAccountPart2" component={NewAccountPart2}/>
                 <Route path="/PasswordRecovery" component={PasswordRecovery}/>
                 <Route path="/GeneralSetting" component={GeneralSetting}/>
+                <Route path="/SettingAccount" component={SettingAccount}/>
+                <Route path="/AccountNameModify" component={AccountNameModify}/>
+                <Route path="/MailModify" component={MailModify}/>
             </Switch>
         </Router>
     );

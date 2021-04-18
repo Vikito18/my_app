@@ -1,6 +1,5 @@
 import FormLastName from "../components/FormLastName";
 import FormFirstName from "../components/FormFirstName";
-import PhoneNumber from "../components/PhoneNumber";
 import TitleSignUp from "../components/TitleSignUp";
 import React from "react";
 import ButtonReturn from "../components/ButtonReturn";
@@ -9,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
+import FormMail from "../components/FormMail";
 
 
 
@@ -19,7 +19,7 @@ const NewAccountPart1 = () => {
             <TitleSignUp />
             <FormLastName />
             <FormFirstName />
-            <PhoneNumber />
+            <FormMail />
             <Container className="d-flex justify-content-center">
                 <Row>
                     <Col>

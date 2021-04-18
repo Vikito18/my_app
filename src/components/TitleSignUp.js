@@ -1,17 +1,22 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 
 const TitleNewAccount = () => {
 
-    return(
+    return (
 
-        
-        <div className="container-fluid bg-info p-3">
-            <div className="row">
-                <h1 className="col text-center ">Nouveau compte</h1>
-            </div>
-        </div>
+
+        <Container fluid className="bg-info p-3">
+            <Row>
+                <Col>
+                    <h1 className="col text-center ">Nouveau compte</h1>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
-export default TitleNewAccount ;
+export default TitleNewAccount;
