@@ -1,39 +1,25 @@
 module.exports = {
-    env: {
-        "node": true,
-        "browser": true,
-        "es2021": true
+  env: {
+    node: true,
+    browser: true,
+    es2021: true,
+  },
+  extends: ["eslint:recommended", "plugin:react/recommended"],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
-    }
+    ecmaVersion: 12,
+    sourceType: "module",
+  },
+  plugins: ["react"],
+  rules: {
+    indent: ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    quotes: ["error", "double"],
+    semi: ["error", "always"],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+  },
 };

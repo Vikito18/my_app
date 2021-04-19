@@ -6,17 +6,17 @@ import Row from "react-bootstrap/Row";
 
 const TitleNewAccount = () => {
 
-    return (
+  return (
 
 
-        <Container fluid className="bg-info p-3">
-            <Row>
-                <Col>
-                    <h1 className="col text-center ">Nouveau compte</h1>
-                </Col>
-            </Row>
-        </Container>
-    );
+    <Container fluid className="bg-info p-3">
+      <Row>
+        <Col>
+          <h1 className="col text-center ">Nouveau compte</h1>
+        </Col>
+      </Row>
+    </Container>
+  );
 };
 
 export default TitleNewAccount;

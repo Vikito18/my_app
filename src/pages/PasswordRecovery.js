@@ -14,25 +14,25 @@ import FormMail from "../components/FormMail";
 
 const PasswordRecovery = () => {
 
-    return (
-        <div>
-            <TitleRecovery />
-            <FormLastName />
-            <FormFirstName />
-            <FormMail />
-            <Container className="d-flex justify-content-center">
-                <Row>
-                    <Col>
-                        <Link to="/">
-                            <ButtonReturn />
-                        </Link>
-                    </Col>
-                    <Col>
-                        <ButtonOk />
-                    </Col>
-                </Row>
-            </Container>
-        </div>
-    );
+  return (
+    <div>
+      <TitleRecovery />
+      <FormLastName />
+      <FormFirstName />
+      <FormMail />
+      <Container className="d-flex justify-content-center">
+        <Row>
+          <Col>
+            <Link to="/">
+              <ButtonReturn />
+            </Link>
+          </Col>
+          <Col>
+            <ButtonOk />
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 };
 export default PasswordRecovery;

@@ -15,69 +15,69 @@ import { Link } from "react-router-dom";
 const GeneralSetting = () => {
     
 
-    return (
-        <div>
-            <Container className="bg-info p-3" >
-                <h1 className="text-center">Gestion de budget</h1>
-            </Container>
-            <Container className="d-flex justify-content-center mt-5">
-                <Dropdown as={ButtonGroup} size="lg">
-                    <Dropdown.Toggle id="dropdown-custom-1">Langage</Dropdown.Toggle>
-                    <Dropdown.Menu className="bg-secondary text-white">
-                        <Dropdown.Item as="button">Français</Dropdown.Item>
-                        <Dropdown.Item as="button">Anglais</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </Container>
-            <Container className="mt-5 p-3 mb-2 bg-secondary text-white">
-                <Row>
-                    <Col className="custom-control custom-switch">
-                        <label className="custom-control-label" htmlFor="customSwitch1">Activer la mise à jour automatique</label>
-                    </Col>
-                    <Col>
-                        <input type="checkbox" className="custom-control-input" id="customSwitch1" />
-                    </Col>
-                </Row>
-            </Container>
-            <Container className="d-flex justify-content-center mt-5">
-                <Dropdown as={ButtonGroup} size="lg">
-                    <Dropdown.Toggle id="dropdown-custom-1">Couleur du théme</Dropdown.Toggle>
-                    <Dropdown.Menu className="super-colors bg-secondary text-white">
-                        <Dropdown.Item as="button">Sombre</Dropdown.Item>
-                        <Dropdown.Item as="button">Claire</Dropdown.Item>
-                        <Dropdown.Item as="button">Bleu</Dropdown.Item>
-                        <Dropdown.Item as="button">Orange</Dropdown.Item>
-                        <Dropdown.Item as="button">Violet</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </Container>
-            <Container className="d-flex justify-content-center mt-5 mb-5">
-                <Dropdown as={ButtonGroup} size="lg">
-                    <Dropdown.Toggle id="dropdown-custom-1">Unité de monnaie</Dropdown.Toggle>
-                    <Dropdown.Menu className="super-colors bg-secondary text-white">
-                        <Dropdown.Item as="button">Euro</Dropdown.Item>
-                        <Dropdown.Item as="button">Dollar</Dropdown.Item>
-                        <Dropdown.Item as="button">Yen</Dropdown.Item>
-                        <Dropdown.Item as="button">Livre Sterling</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </Container>
-            <Container className="d-flex justify-content-center">
-                <Row>
-                    <Col>
-                        <Link to="/">
-                            <ButtonReturn />
-                        </Link>
-                    </Col>
-                    <Col>
-                        <Link to="/">
-                            <ButtonOk />
-                        </Link>
-                    </Col>
-                </Row>
-            </Container>
+  return (
+    <div>
+      <Container className="bg-info p-3" >
+        <h1 className="text-center">Gestion de budget</h1>
+      </Container>
+      <Container className="d-flex justify-content-center mt-5">
+        <Dropdown as={ButtonGroup} size="lg">
+          <Dropdown.Toggle id="dropdown-custom-1">Langage</Dropdown.Toggle>
+          <Dropdown.Menu className="bg-secondary text-white">
+            <Dropdown.Item as="button">Français</Dropdown.Item>
+            <Dropdown.Item as="button">Anglais</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Container>
+      <Container className="mt-5 p-3 mb-2 bg-secondary text-white">
+        <Row>
+          <Col className="custom-control custom-switch">
+            <label className="custom-control-label" htmlFor="customSwitch1">Activer la mise à jour automatique</label>
+          </Col>
+          <Col>
+            <input type="checkbox" className="custom-control-input" id="customSwitch1" />
+          </Col>
+        </Row>
+      </Container>
+      <Container className="d-flex justify-content-center mt-5">
+        <Dropdown as={ButtonGroup} size="lg">
+          <Dropdown.Toggle id="dropdown-custom-1">Couleur du théme</Dropdown.Toggle>
+          <Dropdown.Menu className="super-colors bg-secondary text-white">
+            <Dropdown.Item as="button">Sombre</Dropdown.Item>
+            <Dropdown.Item as="button">Claire</Dropdown.Item>
+            <Dropdown.Item as="button">Bleu</Dropdown.Item>
+            <Dropdown.Item as="button">Orange</Dropdown.Item>
+            <Dropdown.Item as="button">Violet</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Container>
+      <Container className="d-flex justify-content-center mt-5 mb-5">
+        <Dropdown as={ButtonGroup} size="lg">
+          <Dropdown.Toggle id="dropdown-custom-1">Unité de monnaie</Dropdown.Toggle>
+          <Dropdown.Menu className="super-colors bg-secondary text-white">
+            <Dropdown.Item as="button">Euro</Dropdown.Item>
+            <Dropdown.Item as="button">Dollar</Dropdown.Item>
+            <Dropdown.Item as="button">Yen</Dropdown.Item>
+            <Dropdown.Item as="button">Livre Sterling</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Container>
+      <Container className="d-flex justify-content-center">
+        <Row>
+          <Col>
+            <Link to="/">
+              <ButtonReturn />
+            </Link>
+          </Col>
+          <Col>
+            <Link to="/">
+              <ButtonOk />
+            </Link>
+          </Col>
+        </Row>
+      </Container>
 
-        </div>
-    );
+    </div>
+  );
 };
 export default GeneralSetting;

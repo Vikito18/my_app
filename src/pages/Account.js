@@ -10,32 +10,30 @@ import ButtonReturn from "../components/ButtonReturn";
 import ButtonOk from "../components/ButtonOk";
 import { Link } from "react-router-dom";
 
-
 const Account = () => {
-
-    return (
-        <div>
-            <TitleSignIn />
-            <FormAccountName />
-            <FormPassword />
-            <Link to="/PasswordRecovery">
-                <ForgotPassword />
+  return (
+    <div>
+      <TitleSignIn />
+      <FormAccountName />
+      <FormPassword />
+      <Link to="/PasswordRecovery">
+        <ForgotPassword />
+      </Link>
+      <Container className="d-flex justify-content-center">
+        <Row>
+          <Col>
+            <Link to="/">
+              <ButtonReturn />
             </Link>
-            <Container className="d-flex justify-content-center">
-                <Row>
-                    <Col>
-                        <Link to="/">
-                            <ButtonReturn />
-                        </Link>
-                    </Col>
-                    <Col>
-                        <Link to="BudgetManagement">
-                            <ButtonOk />
-                        </Link>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
-    );
+          </Col>
+          <Col>
+            <Link to="BudgetManagement">
+              <ButtonOk />
+            </Link>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 };
 export default Account;

@@ -1,34 +1,30 @@
-import SignIn from "../components/SignIn";
-import SignUp from "../components/SignUp";
-import Setting from "../components/Setting";
-import Update from "../components/Update";
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import LinkButton from "../components/LinkButton";
 
+import Page, { PageContent, PageHeader } from "../components/Page";
 
+const MainPage = () => {
+  return (
+    <Page>
+      <PageHeader noMenu noBack>
+        MasterCash
+      </PageHeader>
+      <PageContent className="d-flex flex-column gap-4 justify-content-center">
+        <LinkButton size="lg" variant="primary" to="/SignUp">
+          Sign Up
+        </LinkButton>
+        <LinkButton size="lg" variant="outline-primary" to="/Account">
+          Sign In
+        </LinkButton>
+        <LinkButton size="lg" variant="outline-primary" to="/GeneralSetting">
+          Settings
+        </LinkButton>
+        <LinkButton size="lg" variant="outline-primary" to="/Account">
+          Account
+        </LinkButton>
+      </PageContent>
+    </Page>
+  );
+};
 
-
-
-
-
-
-function MainPage() {
-    return (
-        <div>
-            <Container fluid className="bg-info p-3">
-                <Row>
-                    <Col>
-                        <h1 className="col text-center ">MasterCash</h1>
-                    </Col>
-                </Row>
-            </Container>
-            <SignIn />
-            <SignUp />
-            <Setting />
-            <Update />
-        </div>
-    );
-}
 export default MainPage;
