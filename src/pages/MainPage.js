@@ -13,14 +13,14 @@ const MainPage = () => {
         <LinkButton size="lg" variant="primary" to="/SignUp">
           Sign Up
         </LinkButton>
-        <LinkButton size="lg" variant="outline-primary" to="/Account">
+        <LinkButton size="lg" variant="outline-primary" to="/SignIn">
           Sign In
         </LinkButton>
         <LinkButton size="lg" variant="outline-primary" to="/GeneralSetting">
           Settings
         </LinkButton>
-        <LinkButton size="lg" variant="outline-primary" to="/Account">
-          Account
+        <LinkButton size="lg" variant="outline-secondary" to="/Account">
+          Update
         </LinkButton>
       </PageContent>
     </Page>

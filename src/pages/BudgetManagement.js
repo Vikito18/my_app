@@ -7,7 +7,8 @@ import BudgetCard from "../components/BudgetCard";
 const BudgetManagement = () => {
   return (
     <Page>
-      <PageHeader noBack>Dashboard</PageHeader>
+      <PageHeader noBack>Dashboard
+      </PageHeader>
       <PageContent>
         <Row className="justify-content-center mb-3">
           <Col>

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import MainPage from "./pages/MainPage";
-import Account from "./pages/Account";
+import SignIn from "./pages/SignIn";
 import BudgetManagement from "./pages/BudgetManagement";
 import SignUp from "./pages/SignUp";
 import PasswordRecovery from "./pages/PasswordRecovery";
@@ -16,7 +16,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route path="/" exact component={MainPage} />
-        <Route path="/Account" component={Account} />
+        <Route path="/SignIn" component={SignIn} />
         <Route path="/BudgetManagement" component={BudgetManagement} />
         <Route path="/SignUp" component={SignUp} />
         <Route path="/PasswordRecovery" component={PasswordRecovery} />

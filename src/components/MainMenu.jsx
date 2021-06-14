@@ -10,19 +10,21 @@
 //   </Container>
 // </Link>
 
-import { Button } from "react-bootstrap";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
-import classNames from "../classNames";
 
-const MainMenu = (props) => {
+const MainMenu = () => {
   return (
-    <Button
-      size="lg"
-      {...props}
-      {...classNames("position-absolute end-0", props)}
-    >
-      ☰
-    </Button>
+  
+    <DropdownButton clasName="bg-primary" title="☰">
+      <Dropdown.Item href="/SignIn">Account</Dropdown.Item>
+      <Dropdown.Item href="/GeneralSetting">Setting</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item href="/">Quit</Dropdown.Item>
+    </DropdownButton>
+      
+      
   );
 };
 
