@@ -19,7 +19,7 @@ const MainPage = () => {
         <LinkButton size="lg" variant="outline-primary" to="/GeneralSetting">
           Settings
         </LinkButton>
-        <LinkButton size="lg" variant="outline-secondary" to="/Account">
+        <LinkButton size="lg" variant="outline-secondary" to="/">
           Update
         </LinkButton>
       </PageContent>
