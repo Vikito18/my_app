@@ -1,63 +1,55 @@
-import { useCallback } from "react"
-import { Container } from "react-bootstrap"
-import Link from "next/link"
+import { useCallback } from "react";
+import { useHistory } from "react-router";
+import { Container } from "react-bootstrap";
 
-import classNames from "@/classNames"
+import classNames from "../classNames";
+import MainMenu from "./MainMenu";
 
 const BackButton = (props) => {
-  const { hide } = props
+  const history = useHistory();
   const handleClick = useCallback(() => {
-    history.back()
-  }, [])
+    history.goBack();
+  }, [history]);
 
   return (
-    <span
-      onClick={handleClick}
-      className="p-1"
-      style={{ fontSize: "2rem", visibility: hide ? "hidden" : "visible" }}
-    >
+    <span onClick={handleClick} className="h2 position-absolute" {...props}>
       ⬅︎
     </span>
-  )
-}
+  );
+};
 
 export const PageHeader = (props) => {
-  const { children, noMenu, noBack, ...otherProps } = props
+  const { children, noMenu, noBack, ...otherProps } = props;
 
   return (
     <header
       {...otherProps}
       {...classNames(
-        "d-flex align-items-center bg-primary px-2 py-3 position-sticky",
-        props,
+        "d-flex align-items-center bg-primary px-2 py-3 position-fixed top-0 start-0 end-0 w-100",
+        props
       )}
-      style={{ zIndex: 100000, top: 0 }}
+      style={{ zIndex: 100000 }}
     >
-      <BackButton hide={noBack} />
-      <h1 {...classNames("flex-grow-1 h2 text-white text-center m-0", props)}>
+      {noBack ? null : <BackButton />}
+      <h1 {...classNames("flex-grow-1 text-white text-center m-0", props)}>
         {children}
       </h1>
-      {noMenu ? null : (
-        <Link href="/settings">
-          <a className="p-1" style={{ fontSize: "2rem" }}>
-            ⚙️
-          </a>
-        </Link>
-      )}
+      {noMenu ? null : <MainMenu />}
     </header>
-  )
-}
+  );
+};
 
 export const PageContent = (props) => {
-  const { noPadding, ...otherProps } = props
+  const { noPadding, ...otherProps } = props;
 
   return (
     <div
       {...otherProps}
       {...classNames(`flex-grow-1  ${noPadding ? "" : "p-3"}`, otherProps)}
+      style={{ marginTop: 64 }}
     />
-  )
-}
+  );
+};
 
 const Page = (props) => (
   <Container
@@ -66,6 +58,6 @@ const Page = (props) => (
     {...props}
     {...classNames("h-100 d-flex flex-column p-0", props)}
   />
-)
+);
 
-export default Page
+export default Page;
