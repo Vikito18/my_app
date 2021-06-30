@@ -21,33 +21,17 @@ const initialValues = {
 const AddExpenditurePage = (props) => {
   const {
     router: {
-      query: { slug },
+      query: { categoryId },
     },
   } = props
-  const {
-    update,
-    state: {
-      categories: { [slug]: category },
-    },
-  } = useAppContext()
+
+  const { addExpenditure } = useAppContext()
   const handleFormSubmit = useCallback(
-    ({ amount, description }) => {
-      update(
-        {
-          categories: {
-            [slug]: {
-              ...category,
-              expenditures: {
-                [new Date().toISOString()]: { amount, description },
-              },
-            },
-          },
-        },
-        true,
-      )
+    async ({ amount, description }) => {
+      await addExpenditure({ categoryId, amount, description })
       history.back()
     },
-    [update, category, slug],
+    [addExpenditure, categoryId],
   )
 
   return (

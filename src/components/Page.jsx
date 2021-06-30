@@ -14,7 +14,11 @@ const BackButton = (props) => {
     <span
       onClick={handleClick}
       className="p-1"
-      style={{ fontSize: "2rem", visibility: hide ? "hidden" : "visible" }}
+      style={{
+        fontSize: "2rem",
+        visibility: hide ? "hidden" : "visible",
+        cursor: "pointer",
+      }}
     >
       ⬅︎
     </span>

@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button"
 import { Formik } from "formik"
 import * as Yup from "yup"
 
-import slugify from "@/slugify"
 import Page, { PageContent, PageHeader } from "@/components/Page"
 import FormField from "@/components/FormField"
 import { useAppContext } from "@/components/AppContext"
@@ -16,24 +15,14 @@ const validationSchema = Yup.object({
 const initialValues = { name: "", budget: "" }
 
 const AddCategory = () => {
-  const {
-    update,
-    state: { categories },
-  } = useAppContext()
+  const { addCategory } = useAppContext()
   const handleFormSubmit = useCallback(
-    ({ name, budget }) => {
-      const category = {
-        ...categories[name],
-        name,
-        budget,
-        expenditures: {},
-        slug: slugify(name),
-      }
+    async ({ name, budget }) => {
+      await addCategory({ name, budget })
 
-      update({ categories: { ...categories, [category.slug]: category } })
       history.back()
     },
-    [update, categories],
+    [addCategory],
   )
 
   return (

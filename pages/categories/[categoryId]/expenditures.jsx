@@ -8,29 +8,44 @@ import formatNumber from "@/formatNumber"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Expenditure from "@/components/Expenditure"
+import { useCallback, useEffect, useState } from "react"
+import Loader from "@/components/Loader"
 
 const ExpendituresByCategoryPage = (props) => {
   const {
     router: {
-      query: { slug },
+      query: { categoryId },
     },
   } = props
-  const {
-    state: {
-      categories: { [slug]: category },
+  const [category, setCategory] = useState(null)
+  const { fetchCategory, deleteExpenditure } = useAppContext()
+  const handleDeleteExpenditure = useCallback(
+    async (id) => {
+      await deleteExpenditure({ id, categoryId })
+      setCategory(await fetchCategory(categoryId))
     },
-  } = useAppContext()
+    [deleteExpenditure, fetchCategory, categoryId],
+  )
+
+  useEffect(() => {
+    ;(async () => {
+      setCategory(await fetchCategory(categoryId))
+    })()
+  }, [fetchCategory, categoryId])
 
   if (!category) {
-    return null
+    return (
+      <Page>
+        <PageHeader noBack>Dashboard</PageHeader>
+        <PageContent>
+          <Loader />
+        </PageContent>
+      </Page>
+    )
   }
 
-  const { name, budget, expenditures } = category
-  const expendituresList = Object.entries(expenditures)
-  const spent = expendituresList.reduce(
-    (sum, [, { amount }]) => sum + amount,
-    0,
-  )
+  const { id, name, budget, expenditures } = category
+  const spent = expenditures.reduce((sum, { amount }) => sum + amount, 0)
 
   return (
     <Page>
@@ -47,7 +62,7 @@ const ExpendituresByCategoryPage = (props) => {
           <Button
             variant="success"
             as={(props) => (
-              <Link href={`/categories/${category.slug}/add-expenditure`}>
+              <Link href={`/categories/${id}/add-expenditure`}>
                 <a {...props}>Ajouter une dépense</a>
               </Link>
             )}
@@ -55,9 +70,13 @@ const ExpendituresByCategoryPage = (props) => {
           />
         </p>
         <Row>
-          {expendituresList.map(([date, expenditure]) => (
-            <Col sm={12} lg key={date} className="my-2">
-              <Expenditure {...expenditure} date={date} category={category} />
+          {expenditures.map((expenditure) => (
+            <Col sm={12} lg key={expenditure.id} className="my-2">
+              <Expenditure
+                {...expenditure}
+                category={category}
+                onDelete={handleDeleteExpenditure}
+              />
             </Col>
           ))}
         </Row>

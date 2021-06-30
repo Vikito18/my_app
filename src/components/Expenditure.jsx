@@ -1,16 +1,17 @@
-import React, { useCallback } from "react"
 import Button from "react-bootstrap/Button"
 import Card from "react-bootstrap/Card"
 
 import formatNumber from "@/formatNumber"
-import { useAppContext } from "@/components/AppContext"
+import { useCallback } from "react"
 
 const Expenditure = (props) => {
-  const { description, amount, date, category } = props
-  const { remove } = useAppContext()
-  const handleDelete = useCallback(() => {
-    remove(`categories.${category.slug}.expenditures`, date)
-  }, [remove, date, category])
+  const { description, id, amount, category, onDelete } = props
+  const handleDelete = useCallback(
+    async (e) => {
+      await onDelete(e.currentTarget.getAttribute("data-id"))
+    },
+    [onDelete],
+  )
 
   return (
     <Card>
@@ -23,6 +24,7 @@ const Expenditure = (props) => {
           <Button
             variant="link text-danger"
             size="sm p-0"
+            data-id={id}
             onClick={handleDelete}
           >
             Supprimer

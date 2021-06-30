@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Button from "react-bootstrap/Button"
 import ProgressBar from "react-bootstrap/ProgressBar"
 import Col from "react-bootstrap/Col"
@@ -9,23 +9,39 @@ import formatNumber from "@/formatNumber"
 import { useAppContext } from "@/components/AppContext"
 import Page, { PageContent, PageHeader } from "@/components/Page"
 import BudgetCategory from "@/components/BudgetCategory"
+import Loader from "@/components/Loader"
 
 const DashboardPage = () => {
-  const {
-    state: { categories },
-  } = useAppContext()
+  const [categories, setCategories] = useState(null)
+  const { fetchCategories } = useAppContext()
 
-  const categoriesList = Object.values(categories)
-  const spent = categoriesList
+  useEffect(() => {
+    ;(async () => {
+      setCategories(await fetchCategories())
+    })()
+  }, [fetchCategories])
+
+  if (!categories) {
+    return (
+      <Page>
+        <PageHeader noBack>Dashboard</PageHeader>
+        <PageContent>
+          <Loader />
+        </PageContent>
+      </Page>
+    )
+  }
+
+  const spent = categories
     .flatMap(({ expenditures }) => Object.values(expenditures))
     .reduce((sum, { amount }) => sum + amount, 0)
-  const budget = categoriesList.reduce((sum, { budget }) => sum + budget, 0)
+  const budget = categories.reduce((sum, { budget }) => sum + budget, 0)
 
   return (
     <Page>
       <PageHeader noBack>Dashboard</PageHeader>
       <PageContent>
-        {!categoriesList.length && (
+        {!categories.length && (
           <p>
             <Button
               as={(props) => (
@@ -49,7 +65,7 @@ const DashboardPage = () => {
           />
         </ProgressBar>
         <Row>
-          {categoriesList.map((category) => (
+          {categories.map((category) => (
             <Col sm={12} lg key={category.name} className="my-2">
               <BudgetCategory {...category} />
             </Col>

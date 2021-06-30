@@ -7,7 +7,7 @@ import Link from "next/link"
 import formatNumber from "@/formatNumber"
 
 const BudgetCategory = (props) => {
-  const { name, budget, slug, expenditures } = props
+  const { name, budget, id, expenditures } = props
   const spent = Object.values(expenditures).reduce(
     (xs, { amount }) => xs + amount,
     0,
@@ -40,7 +40,7 @@ const BudgetCategory = (props) => {
             size="sm"
             className="mt-3"
             as={(props) => (
-              <Link href={`/categories/${slug}/add-expenditure`}>
+              <Link href={`/categories/${id}/add-expenditure`}>
                 <a {...props}></a>
               </Link>
             )}
@@ -52,7 +52,7 @@ const BudgetCategory = (props) => {
             size="sm"
             className="mt-3"
             as={(props) => (
-              <Link href={`/categories/${slug}/expenditures`}>
+              <Link href={`/categories/${id}/expenditures`}>
                 <a {...props}></a>
               </Link>
             )}

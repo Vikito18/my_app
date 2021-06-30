@@ -1,66 +1,113 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import deepmerge from "deepmerge"
-import grab from "@/grab"
-import put from "@/put"
+import { useRouter } from "next/router"
 
-const initialState = {
-  categories: {},
-}
+import api from "@/services/api"
+import Loader from "@/components/Loader"
+import { formatCategoriesWithExpenditures } from "@/services/dataFormatter"
 
 const AppContext = createContext()
 
 export const useAppContext = () => useContext(AppContext)
 
-const doNotMergeArray = (a, b) => b
-
 export const AppContextProvider = (props) => {
-  const [state, setState] = useState(initialState)
-  const update = (newState, mergeArray) =>
-    setState((prevState) => {
-      const savedState = deepmerge(
-        prevState,
-        newState,
-        mergeArray
-          ? null
-          : {
-              arrayMerge: doNotMergeArray,
-            },
-      )
-
-      localStorage.setItem("appContext", JSON.stringify(savedState))
-
-      return savedState
+  const router = useRouter()
+  const [session, setSession] = useState("loading")
+  const addExpenditure = async ({ amount, description, categoryId }) => {
+    return api.post(`/categories/${categoryId}/expenditures`, {
+      amount,
+      description,
     })
-  const remove = (target, keyToRemove) =>
-    setState((prevState) => {
-      // eslint-disable-next-line no-unused-vars
-      const { [keyToRemove]: _, ...parent } = grab(prevState, target)
-
-      put(prevState, target, parent)
-
-      localStorage.setItem("appContext", JSON.stringify(prevState))
-
-      return { ...prevState }
+  }
+  const deleteExpenditure = async ({ id, categoryId }) => {
+    return api.delete(`/categories/${categoryId}/expenditures/${id}`)
+  }
+  const addCategory = async ({ budget, name }) => {
+    return api.post("/categories", {
+      budget,
+      name,
     })
-  const reset = () => setState(initialState)
+  }
+  const deleteCategory = async (id) => {
+    return api.delete(`/categories/${id}`)
+  }
+  const fetchCategory = async (id) => {
+    const { data } = await api.get(`/categories/${id}`)
+
+    return formatCategoriesWithExpenditures(data)[0]
+  }
+  const fetchCategories = async () => {
+    const { data } = await api.get("/categories")
+
+    return formatCategoriesWithExpenditures(data)
+  }
+  const fetchExpenditures = async (categoryId) => {
+    const { data } = await api.get(`/categories/${categoryId}`)
+
+    return data
+  }
+  const signIn = async ({ email, password }) => {
+    const { data } = await api.post("/sign-in", { email, password })
+
+    setSession({ userId: data })
+    router.push("/")
+  }
+  const signUp = async ({ email, password }) => {
+    const { data } = await api.post("/sign-up", { email, password })
+
+    setSession({ userId: data })
+    router.push("/")
+  }
 
   useEffect(() => {
-    const rawStore = localStorage.getItem("appContext")
+    ;(async () => {
+      try {
+        const { data: userId } = await api.get("/session")
 
-    if (!rawStore) {
-      update(initialState)
-    }
+        if (!["/sign-in", "/sign-up"].includes(router.pathname)) {
+          if (!userId) {
+            router.push("/sign-up")
+            setSession({ userId: null })
 
-    setState(JSON.parse(rawStore))
-  }, [])
+            return
+          }
+
+          setSession({ userId })
+
+          return
+        } else if (userId) {
+          router.push("/")
+          setSession({ userId })
+
+          return
+        }
+      } catch (err) {
+        //
+      }
+
+      setSession({ userId: null })
+    })()
+  }, [router])
+
+  if (
+    session === "loading" ||
+    (!session.userId && !["/sign-in", "/sign-up"].includes(router.pathname))
+  ) {
+    return <Loader />
+  }
 
   return (
     <AppContext.Provider
       value={{
-        state,
-        update,
-        remove,
-        reset,
+        session,
+        addExpenditure,
+        deleteExpenditure,
+        addCategory,
+        deleteCategory,
+        fetchCategory,
+        fetchCategories,
+        fetchExpenditures,
+        signIn,
+        signUp,
       }}
       {...props}
     />
